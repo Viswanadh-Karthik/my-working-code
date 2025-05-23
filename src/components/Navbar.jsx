@@ -27,8 +27,8 @@ const Navbar = () => {
           <button onClick={() => scrollToSection('projects')}>Projects</button>
           <button onClick={() => scrollToSection('contact')}>Contact</button>
           <a 
-            href="/resume.pdf" 
-            download 
+            href="/R12.pdf" 
+            download="R12.pdf"
             className="cv-button"
             title="Download C.V."
           >
