@@ -1,0 +1,130 @@
+.project-page {
+  background-color: var(--background);
+  min-height: 100vh;
+  padding: 6rem 0 2rem;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--contrast);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  color: var(--accent);
+  transform: translateX(-5px);
+}
+
+.project-content {
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.project-content h1 {
+  color: var(--contrast);
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.project-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project-description h2,
+.project-technologies h2 {
+  color: var(--contrast);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-description p {
+  color: var(--contrast);
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.tech-tag {
+  background-color: var(--base);
+  color: var(--contrast);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+  background-color: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.view-project-btn {
+  display: inline-block;
+  background-color: var(--accent);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.view-project-btn:hover {
+  background-color: var(--highlight);
+  box-shadow: 0 0 15px rgba(186, 142, 122, 0.5);
+  transform: translateY(-2px);
+}
+
+.project-not-found {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.project-not-found h2 {
+  color: var(--contrast);
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .project-page {
+    padding: 5rem 0 2rem;
+  }
+
+  .project-content {
+    padding: 1.5rem;
+  }
+
+  .project-content h1 {
+    font-size: 2rem;
+  }
+
+  .project-description h2,
+  .project-technologies h2 {
+    font-size: 1.3rem;
+  }
+
+  .project-description p {
+    font-size: 1rem;
+  }
+
+  .view-project-btn {
+    padding: 0.8rem 1.5rem;
+  }
+} 
