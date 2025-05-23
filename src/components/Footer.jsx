@@ -42,7 +42,7 @@ const Footer = () => {
           ))}
         </div>
         <p className="copyright">
-          © {new Date().getFullYear()} Your Name. All rights reserved.
+          © {new Date().getFullYear()} Viswanadh-Karthik. All rights reserved.
         </p>
       </div>
     </footer>

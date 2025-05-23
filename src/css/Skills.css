@@ -52,7 +52,9 @@
 .skill-card.hovered {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  height: 250px;
+  height: auto;
+  min-height: 120px;
+  max-height: 300px;
 }
 
 .skill-card h3 {
@@ -72,6 +74,7 @@
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
   margin-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .skill-card.hovered .skills-list {
@@ -119,7 +122,8 @@
   }
 
   .skill-card.hovered {
-    height: 220px;
+    min-height: 100px;
+    max-height: 250px;
   }
 
   .skill-card h3 {
