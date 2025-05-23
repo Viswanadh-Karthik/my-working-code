@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../css/Skills.css';
 
 const Skills = () => {
-  const [activeCard, setActiveCard] = useState(null);
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   const skillsData = [
     {
@@ -25,6 +25,11 @@ const Skills = () => {
       title: 'UI/UX',
       skills: ['Figma', 'Adobe XD', 'Prototyping', 'Wireframing'],
     },
+    {
+      id: 5,
+      title: 'Version Control',
+      skills: ['Git', 'GitHub', 'GitLab', 'Bitbucket'],
+    }
   ];
 
   return (
@@ -35,9 +40,9 @@ const Skills = () => {
           {skillsData.map((skill) => (
             <div
               key={skill.id}
-              className={`skill-card ${activeCard === skill.id ? 'active' : ''}`}
-              onMouseEnter={() => setActiveCard(skill.id)}
-              onMouseLeave={() => setActiveCard(null)}
+              className={`skill-card ${hoveredCard === skill.id ? 'hovered' : ''}`}
+              onMouseEnter={() => setHoveredCard(skill.id)}
+              onMouseLeave={() => setHoveredCard(null)}
             >
               <h3>{skill.title}</h3>
               <div className="skills-list">

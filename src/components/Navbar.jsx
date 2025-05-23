@@ -21,11 +21,7 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <div className="logo" onClick={() => scrollToSection('home')}>
-          Home
-        </div>
-        
-        <div className="nav-links">
+        <div className="nav-right">
           <button onClick={() => scrollToSection('about')}>About</button>
           <button onClick={() => scrollToSection('skills')}>Skills</button>
           <button onClick={() => scrollToSection('projects')}>Projects</button>
