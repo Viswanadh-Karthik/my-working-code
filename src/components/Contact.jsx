@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import '../css/Contact.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
+    name: '',
     email: '',
     phone: '',
     message: '',
@@ -10,6 +12,7 @@ const Contact = () => {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -33,19 +36,21 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus({ type: '', message: '' });
 
     // Validate form
     const newErrors = {};
+    if (!formData.name) {
+      newErrors.name = 'Name is required';
+    }
     if (!formData.email) {
       newErrors.email = 'Email is required';
     } else if (!validateEmail(formData.email)) {
       newErrors.email = 'Invalid email format';
     }
-
     if (formData.phone && !validatePhone(formData.phone)) {
       newErrors.phone = 'Invalid phone number format';
     }
-
     if (!formData.message) {
       newErrors.message = 'Message is required';
     }
@@ -56,17 +61,44 @@ const Contact = () => {
       return;
     }
 
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
-    
-    // Reset form
-    setFormData({
-      email: '',
-      phone: '',
-      message: '',
-    });
-    setErrors({});
-    setIsSubmitting(false);
+    try {
+      // Replace these with your actual EmailJS credentials
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        to_email: 'hbeast555@gmail.com',
+      };
+
+      await emailjs.send(
+        'service_aq0ip59', // Replace with your EmailJS service ID
+        'template_khy40xw', // Replace with your EmailJS template ID
+        templateParams,
+        'woZZnHxXUCVPkHQTK' // Replace with your EmailJS public key
+      );
+
+      setSubmitStatus({
+        type: 'success',
+        message: 'Message sent successfully! I will get back to you soon.',
+      });
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+      });
+      setErrors({});
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Failed to send message. Please try again later.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -75,6 +107,19 @@ const Contact = () => {
         <h2 className="section-title">Get in Touch</h2>
         <div className="contact-container">
           <form onSubmit={handleSubmit} className="contact-form">
+            <div className="form-group">
+              <label htmlFor="name">Name *</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className={errors.name ? 'error' : ''}
+              />
+              {errors.name && <span className="error-message">{errors.name}</span>}
+            </div>
+
             <div className="form-group">
               <label htmlFor="email">Email *</label>
               <input
@@ -113,6 +158,12 @@ const Contact = () => {
               />
               {errors.message && <span className="error-message">{errors.message}</span>}
             </div>
+
+            {submitStatus.message && (
+              <div className={`submit-status ${submitStatus.type}`}>
+                {submitStatus.message}
+              </div>
+            )}
 
             <button type="submit" className="submit-btn" disabled={isSubmitting}>
               {isSubmitting ? 'Sending...' : 'Send Message'}

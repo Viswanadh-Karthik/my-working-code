@@ -37,13 +37,14 @@
   border-radius: 5px;
   font-size: 1rem;
   transition: all 0.3s ease;
+  background-color: white;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(215, 161, 132, 0.2);
+  box-shadow: 0 0 0 2px rgba(3, 140, 127, 0.2);
 }
 
 .form-group input.error,
@@ -70,12 +71,31 @@
 
 .submit-btn:hover:not(:disabled) {
   background-color: var(--highlight);
-  box-shadow: 0 0 15px rgba(186, 142, 122, 0.5);
+  box-shadow: 0 0 15px rgba(2, 115, 115, 0.5);
 }
 
 .submit-btn:disabled {
   background-color: var(--base);
   cursor: not-allowed;
+}
+
+.submit-status {
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.submit-status.success {
+  background-color: #f6ffed;
+  border: 1px solid #b7eb8f;
+  color: #52c41a;
+}
+
+.submit-status.error {
+  background-color: #fff2f0;
+  border: 1px solid #ffccc7;
+  color: #ff4d4f;
 }
 
 @media (max-width: 768px) {
